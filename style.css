@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 
 
-
 *{
     margin: 0;
     padding: 0;
@@ -12,14 +11,14 @@
     font-family: "Poppins", sans-serif;
 }
 
-
 :root{
     --bg-color:#081b29;
     --main-color:#00abf0;
     --text-color:#333;
     --second-text-color:#555;
     --white-color:#fff;
-    --cover-color: linear-gradient(45deg, #00abf0, #006e9a);
+    /* --cover-color: linear-gradient(45deg, #00abf0, #006e9a); */
+    --cover-color:linear-gradient(to right bottom, #55c57c,#28b485, #55c57c,#28b485, #55c57c,#28b485, #55c57c,#28b485);
     --pages-color: linear-gradient(90deg, #fff, #ddd);
     --border: .125rem solid #00abf0;
     --box-shadow: 0 0 .6rem rgba(0, 0, 0, .2);
@@ -27,21 +26,30 @@
 
 body{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
+    align-items:center;
     min-height: 100vh;
-    background: var(--bg-color);
+    /* background: var(--bg-color); */
+    background: #ddd;
     color: var(--text-color);
     overflow: hidden;
 }
 
+.sidemenu{    
+    width: 20vw;
+    height: 90vh;
+    background-color: #00abf0;position: relative;
+}
 
 .wrapper{
     position: relative;
-    width: 66rem;
-    height: 45rem;
+    /* width: 66rem;
+    height: 45rem; */
+    width: 80vw;
+    height: 90vh;
     padding: 2rem;
     perspective: 250rem;
+    font-size: calc(.5rem + .5vw);
     animation: show-animate 2s forwards ;
 }
 
@@ -57,7 +65,7 @@ body{
 }
 
 
-
+/* Book cover */
 .cover{
     position: absolute;
     top: 0;
@@ -85,11 +93,11 @@ body{
 }
 
 .book{
-position: relative;
-width: 100%;
-height: 100%;
-display: flex;
-perspective: 250rem;
+   position: relative;
+   width: 100%;
+   height: 100%;
+   display: flex;
+   perspective: 250rem;
 }
 
 .book .book-page{
@@ -98,12 +106,11 @@ perspective: 250rem;
     height: 100%;
     background: var(--pages-color);
     box-shadow: 0 0 .6rem rgba(0, 0, 0, .1);
-    display: flex;
     padding: 2rem;
 }
 
 .book-page.page-left{
-    box-shadow: .6rem .6rem .6rem rgba(0, 0, 0, .1);
+    box-shadow: -.6rem .6rem .6rem rgba(0, 0, 0, .1);
 
 }
 
@@ -113,6 +120,7 @@ perspective: 250rem;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
     /* background: seagreen; */
 }
 
@@ -123,13 +131,15 @@ perspective: 250rem;
     margin-bottom: .8rem;
 }   
 
-.profile-page h1{
-    font-size: 2.7rem;
+
+.book h1{
+    font-size: calc(.5rem + 1.5vw);
     line-height: 1;
 }
 
-.profile-page h3{
-    font-size: 1.5rem;
+
+.book h3{
+    font-size: calc(.5rem + .75vw);
     color: var(--main-color);
 }
 
@@ -141,8 +151,8 @@ perspective: 250rem;
  display: inline-flex;
  justify-content: center;
  align-items: center;
- width: 2.5rem;
- height: 2.5rem;
+ width: calc(1rem + 2vw);
+ height: calc(1rem + 2vw);
  background: transparent;
  border: var(--border);
  border-radius: 50%;
@@ -168,17 +178,18 @@ perspective: 250rem;
 
 .btn{
     display: inline-flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    width: 9.5rem;
-    height: 3rem;
+    /* width: 9.5rem; */
+    width: 40%;
+    height: calc(1.5rem + 1.5vw);
     background: var(--main-color);
     border: var(--border);
     border-radius: .3rem;
-    font-size: 1rem;
+    font-size: calc(.5rem + .5vw);
     color: var(--white-color);
-    font-weight: 500;
-    margin: 0 1rem;
+    /* font-weight: bold; */
+    margin: 0 calc(.3rem + .3vw);
     transition: .5s;
 }
 
@@ -191,7 +202,7 @@ perspective: 250rem;
 .btn-box .btn:nth-child(2){
     background: transparent;
     color: var(--main-color);
-}
+} 
 
 .btn-box .btn:nth-child(2):hover{
     background: var(--main-color);
@@ -210,6 +221,7 @@ perspective: 250rem;
     transform: rotateY(-180deg);
 }
 
+.page-left,
 .book-page .page-front,
 .book-page .page-back{
     position: absolute;
@@ -219,7 +231,26 @@ perspective: 250rem;
     height: 100%;
     background: var(--pages-color);
     padding: 1.5rem 2rem;
+    overflow-y: scroll;/*To scroll down on a page*/
 }
+
+
+.page-left::-webkit-scrollbar,
+.book-page .page-front::-webkit-scrollbar,
+.book-page .page-back::-webkit-scrollbar{
+    width: 10px;
+    height: 10px;
+}
+
+
+.page-left::-webkit-scrollbar-thumb,
+.book-page .page-front::-webkit-scrollbar-thumb,
+.book-page .page-back::-webkit-scrollbar-thumb{
+    background: var(--cover-color);
+    border-radius: 10px;
+    box-shadow: inset 2px 2px 2px hsla(0,0%,100%,.25), inset -2px -2px 2px rgba(0, 0, 0, .25);
+}
+
 
 .book-page .page-front{
     transform: rotateY(0deg) translateZ(1px);
@@ -235,7 +266,7 @@ perspective: 250rem;
     margin-bottom: 1rem;
 }
 
-/* The line */
+
 .workeduc-box{
     border-left: var(--border);
 }
@@ -260,11 +291,9 @@ perspective: 250rem;
 
 .workeduc-content .year{
     color: var(--main-color);
-}
-
-.workeduc-content .year i{
     margin-right: .4rem;
 }
+
 
 .number-page{
     position: absolute;

@@ -23,7 +23,6 @@ el.onclick = () =>{
 })
 
 
-
 // contact me button when clicked
 const pages = document.querySelectorAll(".book-page.page-right");
 const contactMeBtn = document.querySelector(".btn.contact-me");
@@ -80,11 +79,9 @@ setTimeout(() => {
     coverRight.classList.add("turn");
 }, 2100);
 
-
 setTimeout(() => {
     coverRight.style.zIndex = -1;
 }, 2800);
-
 
 // opening animation (page Left or profile page animation)
 setTimeout(() => {

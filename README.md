@@ -1,0 +1,1 @@
+A web UI that where all the pages flip backwards and forwards like normal paper book, to be used for holding records of employees in an organization, materials in a warehouse, history of events etc in an organized real-world way.
